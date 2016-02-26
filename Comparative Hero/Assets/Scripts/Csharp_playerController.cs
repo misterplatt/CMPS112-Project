@@ -4,11 +4,12 @@ using System.Collections;
 public class Csharp_playerController : MonoBehaviour {
 
     public float speed = 5f;
-    public float jumpForce = 250f;
+    public float jumpForce = 600f;
+    public float poundForce = 800f;
 
     //Ability unlocks
-    public static bool doubleJump = false;
-    public static bool groundPound = false;
+    public static bool doubleJump = true;
+    public static bool groundPound = true;
 
     public Transform GroundRayStart;
     public LayerMask whatIsGround;
@@ -16,6 +17,7 @@ public class Csharp_playerController : MonoBehaviour {
 
     private bool grounded = true;
     private bool canDoubleJump = false;
+    public static bool groundPounding;
 
 	// Use this for initialization
 	void Start () {
@@ -35,15 +37,25 @@ public class Csharp_playerController : MonoBehaviour {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
+        //Ground Pounding
+        if (Input.GetKeyDown(KeyCode.S) && groundPound && !isGrounded())
+        {
+            Debug.Log("groundpound");
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -poundForce));
+        }
+
         //Jumping
         if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log(groundPound);
             if (isGrounded())
             {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
                 if (doubleJump) canDoubleJump = true;
             }
             else if (canDoubleJump) {
                 canDoubleJump = false;
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
             }
         }

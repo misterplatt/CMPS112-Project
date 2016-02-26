@@ -24,6 +24,6 @@ public class Csharp_enemyController : MonoBehaviour {
 
     virtual protected void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Player") Destroy(col.gameObject);
+        if (col.gameObject.tag == "Player") col.transform.position = new Vector3(-4, 3, 0);
     }
 }
