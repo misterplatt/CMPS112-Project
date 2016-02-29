@@ -20,7 +20,14 @@ public class Csharp_weakSpot : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            health -= 1;
+            if(gameObject.tag == "DownBoss"){
+			if(col.gameObject.GetComponent<Rigidbody2D>().velocity.y < -21.5f){
+			Destroy(gameObject.transform.parent.gameObject);
+			}
+			
+			}else{
+			
+			health -= 1;
             Rigidbody2D r = col.gameObject.GetComponent<Rigidbody2D>();
             r.velocity = new Vector2(r.velocity.x, 0);
             r.AddForce(new Vector2(0, knockup));
@@ -29,6 +36,7 @@ public class Csharp_weakSpot : MonoBehaviour {
                 if (gameObject.tag == "LeftBoss") Csharp_playerController.groundPound = true;
                 Destroy(gameObject.transform.parent.gameObject);
             } 
+			}
         }
     }
 }

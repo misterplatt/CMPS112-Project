@@ -8,8 +8,8 @@ public class Csharp_playerController : MonoBehaviour {
     public float poundForce = 800f;
 
     //Ability unlocks
-    public static bool doubleJump = true;
-    public static bool groundPound = true;
+    public static bool doubleJump = false;
+    public static bool groundPound = false;
 
     public Transform GroundRayStart;
     public LayerMask whatIsGround;
