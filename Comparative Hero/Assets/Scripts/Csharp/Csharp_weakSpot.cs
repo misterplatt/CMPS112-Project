@@ -32,8 +32,8 @@ public class Csharp_weakSpot : MonoBehaviour {
             r.velocity = new Vector2(r.velocity.x, 0);
             r.AddForce(new Vector2(0, knockup));
             if (health <= 0) {
-                if (gameObject.tag == "RightBoss") Csharp_playerController.doubleJump = true;
-                if (gameObject.tag == "LeftBoss") Csharp_playerController.groundPound = true;
+                if (gameObject.tag == "RightBoss") Csharp_playerController.doubleJumpUnlocked = true;
+                if (gameObject.tag == "LeftBoss") Csharp_playerController.groundPoundUnlocked = true;
                 Destroy(gameObject.transform.parent.gameObject);
             } 
 			}

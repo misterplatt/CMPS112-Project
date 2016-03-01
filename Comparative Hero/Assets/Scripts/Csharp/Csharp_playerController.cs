@@ -8,8 +8,8 @@ public class Csharp_playerController : MonoBehaviour {
     public float poundForce = 800f;
 
     //Ability unlocks
-    public static bool doubleJump = false;
-    public static bool groundPound = false;
+    public static bool doubleJumpUnlocked = false;
+    public static bool groundPoundUnlocked = false;
 
     public Transform GroundRayStart;
     public LayerMask whatIsGround;
@@ -27,6 +27,11 @@ public class Csharp_playerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (Input.GetKeyDown(KeyCode.U)) {
+            doubleJumpUnlocked = true;
+            groundPoundUnlocked = true;
+        } 
+
         //Left-Right Movement
         if (Input.GetKey(KeyCode.A)) {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
@@ -38,7 +43,7 @@ public class Csharp_playerController : MonoBehaviour {
         }
 
         //Ground Pounding
-        if (Input.GetKeyDown(KeyCode.S) && groundPound && !isGrounded())
+        if (Input.GetKeyDown(KeyCode.S) && groundPoundUnlocked && !isGrounded())
         {
             Debug.Log("groundpound");
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -poundForce));
@@ -46,12 +51,12 @@ public class Csharp_playerController : MonoBehaviour {
 
         //Jumping
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log(groundPound);
+            Debug.Log(groundPoundUnlocked);
             if (isGrounded())
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
-                if (doubleJump) canDoubleJump = true;
+                if (doubleJumpUnlocked) canDoubleJump = true;
             }
             else if (canDoubleJump) {
                 canDoubleJump = false;

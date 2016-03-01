@@ -23,7 +23,7 @@ public class Csharp_flyingEnemyController : Csharp_enemyController
         base.Update();
         if (playerBelow()) {
             dropped = true;
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -120));
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -80));
         }
         if (dropped) {
             timer += Time.deltaTime;
