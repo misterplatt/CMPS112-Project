@@ -1,24 +1,25 @@
 import UnityEngine
 import System.Collections
 
+
 public class boo_enemyController(MonoBehaviour):
 
 	
 	public speed as single = 3.0F
 
 	
-	private initialPosition as Vector3
+	protected initialPosition as Vector3
 
-	private left = false
+	protected left = false
 
 	
 	// Use this for initialization
-	private def Start():
+	protected virtual def Start():
 		initialPosition = transform.position
 
 	
 	// Update is called once per frame
-	private def Update():
+	protected virtual def Update():
 		if transform.position.x >= (initialPosition.x + 3):
 			left = true
 		if transform.position.x < initialPosition.x:
@@ -30,6 +31,6 @@ public class boo_enemyController(MonoBehaviour):
 			transform.Translate(((Vector3.left * Time.deltaTime) * speed))
 
 	
-	private def OnCollisionEnter2D(col as Collision2D):
+	protected virtual def OnCollisionEnter2D(col as Collision2D):
 		if col.gameObject.tag == 'Player':
-			Destroy(col.gameObject)
+			col.transform.position = Vector3(-4, 3, 0)
