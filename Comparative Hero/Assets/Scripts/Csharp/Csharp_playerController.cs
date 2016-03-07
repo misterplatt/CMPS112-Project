@@ -17,7 +17,6 @@ public class Csharp_playerController : MonoBehaviour {
 
     private bool grounded = true;
     private bool canDoubleJump = false;
-    public static bool groundPounding;
 
 	// Use this for initialization
 	void Start () {

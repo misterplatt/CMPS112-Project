@@ -3,17 +3,10 @@ using System.Collections;
 
 public class Csharp_weakSpot : MonoBehaviour {
 
-    public float knockup = 900f;
+    public float knockup = 500f;
     public int health = 1;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void Start(){
 	}
 
     void OnTriggerEnter2D(Collider2D col)
