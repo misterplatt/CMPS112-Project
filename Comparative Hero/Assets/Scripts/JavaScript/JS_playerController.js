@@ -6,6 +6,7 @@ public var poundForce : float = 800f;
 
 public static var doubleJumpUnlocked : boolean = false;
 public static var groundPoundUnlocked : boolean = false;
+public static var playerWin : boolean = false;
 
 public var GroundRayStart : Transform;
 public var whatIsGround : LayerMask;

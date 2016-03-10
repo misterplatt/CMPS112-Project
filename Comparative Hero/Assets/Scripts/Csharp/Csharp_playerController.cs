@@ -10,6 +10,7 @@ public class Csharp_playerController : MonoBehaviour {
     //Ability unlocks
     public static bool doubleJumpUnlocked = false;
     public static bool groundPoundUnlocked = false;
+	public static bool playerWin = false;
 
     public Transform GroundRayStart;
     public LayerMask whatIsGround;

@@ -6,7 +6,8 @@ var health : int = 1;
 function OnTriggerEnter2D(col : Collider2D){
 	if (col.gameObject.tag == "Player"){
         if(gameObject.tag == "DownBoss"){
-		if(col.gameObject.GetComponent(Rigidbody2D).velocity.y < -21.5f){
+		if(col.gameObject.GetComponent(Rigidbody2D).velocity.y < -10f){
+			JS_playerController.playerWin = true;
 			Destroy(gameObject.transform.parent.gameObject);
 		}
 

@@ -15,6 +15,8 @@ public class boo_playerController(MonoBehaviour):
 
 	public static groundPound = false
 
+	public static playerWin = false
+
 	public GroundRayStart as Transform
 
 	public whatIsGround as LayerMask

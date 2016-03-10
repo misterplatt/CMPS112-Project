@@ -13,10 +13,11 @@ public class Csharp_weakSpot : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
-            if(gameObject.tag == "DownBoss"){
-			if(col.gameObject.GetComponent<Rigidbody2D>().velocity.y < -21.5f){
-			Destroy(gameObject.transform.parent.gameObject);
-			}
+			if(gameObject.tag == "DownBoss"){
+				if(col.gameObject.GetComponent<Rigidbody2D>().velocity.y < -10f){
+					Csharp_playerController.playerWin = true;
+					Destroy(gameObject.transform.parent.gameObject);
+				}
 			
 			}else{
 			

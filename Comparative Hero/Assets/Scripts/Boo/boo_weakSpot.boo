@@ -5,7 +5,7 @@ import System.Collections
 public class boo_weakSpot(MonoBehaviour):
 
 	
-	public knockup as single = 900.0F
+	public knockup as single = 500.0F
 
 	public health = 1
 
@@ -25,7 +25,8 @@ public class boo_weakSpot(MonoBehaviour):
 	private def OnTriggerEnter2D(col as Collider2D):
 		if col.gameObject.tag == 'Player':
 			if gameObject.tag == 'DownBoss':
-				if col.gameObject.GetComponent[of Rigidbody2D]().velocity.y < (-21.5F):
+				if col.gameObject.GetComponent[of Rigidbody2D]().velocity.y < (-10F):
+					boo_playerController.playerWin = true
 					Destroy(gameObject.transform.parent.gameObject)
 			else:
 				
